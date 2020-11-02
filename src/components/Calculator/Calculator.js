@@ -110,6 +110,7 @@ function Calculator(props) {
                 <button onClick={(event) => numberInput(event, '7')}>7</button>
                 <button onClick={(event) => numberInput(event, '8')}>8</button>
                 <button onClick={(event) => numberInput(event, '9')}>9</button>
+                <button onClick={(event) => numberInput(event, '.')}>.</button>
             </div>
             <div>
                 {/* could be an operator button component */}
