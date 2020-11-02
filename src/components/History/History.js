@@ -15,7 +15,6 @@ function History() {
     useEffect(() => {  
         console.log('the component has (re)rendered');
         console.log('history is: ', history);
-        
     });
 
     //useEffect to re render anytime history is updated

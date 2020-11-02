@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     const query = 'SELECT * FROM calculations ORDER BY answer DESC;'
     pool.query(query)
         .then((result) => {
-            console.log('got stuff from the db: ', result);
+            console.log('history retrieved: ', result.rows);
             res.send(result.rows);
         })
         .catch((error) => {
@@ -17,7 +17,6 @@ router.get('/', (req, res) => {
 })
 //post route
 router.post('/', (req, res) => {
-    console.log('req.body is', req.body);
     const query = 
         `INSERT INTO "calculations" ("first-number", "operator-symbol", "second-number", "answer", "timestamp")
         VALUES($1,$2,$3,$4,NOW());`

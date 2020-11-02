@@ -8,7 +8,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery } from 'redux-saga/effects';
+import { takeEvery, put } from 'redux-saga/effects';
 
 // THE HISTORY REDUCER
 const historyReducer = (state = [], action) => {
@@ -20,17 +20,26 @@ const historyReducer = (state = [], action) => {
 
 // SAGA STUFF
 function* postCalculationSaga(action) {
-  console.log('postCalculationSaga was hit with action:', action);
   try {
     yield axios.post('/calculations', action.payload);
-    // then refresh history??
+    yield put({ type: 'FETCH_HISTORY' });
   } catch (error) {
     console.log('error posting an element', error);
   }    
 }
 
+function* getCalculationHistory() {
+  try {
+    const historyResponse = yield axios.get('/calculations');
+    yield put({ type: 'UPDATE_HISTORY', payload: historyResponse.data });
+  } catch (error) {
+    console.log('error posting an element', error);
+  }
+}
+
 function* watcherSaga() {
   yield takeEvery('SAVE_CALCULATION_TO_DB', postCalculationSaga);
+  yield takeEvery('FETCH_HISTORY', getCalculationHistory);
 }
 
 const sagaMiddleware = createSagaMiddleware();
