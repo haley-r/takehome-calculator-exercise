@@ -14,10 +14,21 @@ function Calculator(props) {
     const [firstNumber, setFirstNumber] = useState('');
     const [operator, setOperator] = useState({});
     const [secondNumber, setSecondNumber] = useState('');
+    const [answer, setAnswer] = useState('');
+    const [lastAnswer, setLastAnswer] = useState('');
 
     const numberInput =(event, value)=> {
-        // if there is an operator set, add to second number string        
-        if (operator.type){
+        // if number is selected right after completing a calculation
+        // then clear values and add to first number string
+        if (operator.type && answer!=''){
+            setFirstNumber(value);
+            setOperator({});
+            setSecondNumber('');
+            setAnswer('');
+        }
+        // if there is an operator set but not just because
+        // a calculation was just run, add to second number string        
+        else if (operator.type && answer==''){
             setSecondNumber(secondNumber + value);
         }
         // if theres not an operator set, add to the first number string
@@ -27,17 +38,41 @@ function Calculator(props) {
     }
 
     const operatorInput =(event, type, symbol)=> {
-        //if someone chooses an operator before choosing a first number
-        //use last answer from redux store
-        setOperator({
+        // if operator is selected right after completing a calculation
+        // set lastAnswer as first number and clear other fields
+        if (answer != '') {
+            setFirstNumber(lastAnswer);
+            setOperator({type: type, symbol: symbol});
+            setSecondNumber('');
+            setAnswer('');
+        }
+        else setOperator({
             type: type,
             symbol: symbol
         })
     }
 
     const runCalculation=()=>{
-        console.log('so you wanna run the calculation huh');
-        //dispatch values somewhere
+        // set the answer
+        let theAnswer = '';
+        if (operator.type=='add'){
+            theAnswer = Number(firstNumber)+ Number(secondNumber)
+        } else if (operator.type == 'subtract') {
+            theAnswer = Number(firstNumber) - Number(secondNumber)
+        } else if (operator.type == 'multiply') {
+            theAnswer = Number(firstNumber) * Number(secondNumber)
+        } else if (operator.type == 'divide') {
+            theAnswer = Number(firstNumber) / Number(secondNumber)
+        } else {
+            if (secondNumber==''){
+                theAnswer = firstNumber;
+            } else{
+                theAnswer = 'ERR';
+            }
+        }
+        setAnswer(theAnswer);
+        setLastAnswer(theAnswer);
+        // send everything to the database
     }
     const clearAll=()=>{
         setFirstNumber('');
@@ -48,7 +83,8 @@ function Calculator(props) {
     return (
         <div>
             <h2>Calculator</h2>
-            <p>calculation display: {firstNumber} {operator.symbol} {secondNumber}</p>
+            <p>calculation: {firstNumber} {operator.symbol} {secondNumber}</p>
+            <p>answer: {answer}</p>
             <div>
                 {/* could be a number button component? */}
                 <button onClick={(event) => numberInput(event, '0')}>0</button>
@@ -64,10 +100,10 @@ function Calculator(props) {
             </div>
             <div>
                 {/* could be an operator button component */}
-                <button onClick={(event) => operatorInput(event, 'ADD', '+')}>+</button>
-                <button onClick={(event) => operatorInput(event, 'SUBTRACT', '-')}>-</button>
-                <button onClick={(event) => operatorInput(event, 'MULTIPY', '*')}>*</button>
-                <button onClick={(event) => operatorInput(event, 'DIVIDE', '/')}>/</button>
+                <button onClick={(event) => operatorInput(event, 'add', '+')}>+</button>
+                <button onClick={(event) => operatorInput(event, 'subtract', '-')}>-</button>
+                <button onClick={(event) => operatorInput(event, 'multiply', '*')}>*</button>
+                <button onClick={(event) => operatorInput(event, 'divide', '/')}>/</button>
             </div>
             <div>
                 {/* could be a special calculate component */}
