@@ -1,5 +1,6 @@
 // imports
-// (redux? axios?)
+// import React, {useState} from 'react';
+import { connect } from 'react-redux';
 
 // the purpose of this component is to display
 // the last ten results from all users of the app.
@@ -8,6 +9,9 @@
 // will be used to then display the most up to date history
 
 function History(props) {
+    // const [history, setHistory] = useState({});
+
+    //useEffect to re render anytime history is updated
     return (
         <div>
             <h2>History</h2>
@@ -16,4 +20,13 @@ function History(props) {
     );
 }
 
-export default History;
+
+const putReduxStateOnProps = (reduxState) => ({ history: reduxState.historyReducer });
+export default connect(putReduxStateOnProps)(History);
+
+
+
+
+
+
+

@@ -20,7 +20,7 @@ function Calculator(props) {
     const numberInput =(event, value)=> {
         // if number is selected right after completing a calculation
         // then clear values and add to first number string
-        if (operator.type && answer!=''){
+        if (operator.type && answer!==''){
             setFirstNumber(value);
             setOperator({});
             setSecondNumber('');
@@ -28,7 +28,7 @@ function Calculator(props) {
         }
         // if there is an operator set but not just because
         // a calculation was just run, add to second number string        
-        else if (operator.type && answer==''){
+        else if (operator.type && answer===''){
             setSecondNumber(secondNumber + value);
         }
         // if theres not an operator set, add to the first number string
@@ -40,7 +40,7 @@ function Calculator(props) {
     const operatorInput =(event, type, symbol)=> {
         // if operator is selected right after completing a calculation
         // set lastAnswer as first number and clear other fields
-        if (answer != '') {
+        if (answer !== '') {
             setFirstNumber(lastAnswer);
             setOperator({type: type, symbol: symbol});
             setSecondNumber('');
@@ -55,16 +55,16 @@ function Calculator(props) {
     const runCalculation=()=>{
         // set the answer
         let theAnswer = '';
-        if (operator.type=='add'){
+        if (operator.type === 'add'){
             theAnswer = Number(firstNumber)+ Number(secondNumber)
-        } else if (operator.type == 'subtract') {
+        } else if (operator.type === 'subtract') {
             theAnswer = Number(firstNumber) - Number(secondNumber)
-        } else if (operator.type == 'multiply') {
+        } else if (operator.type === 'multiply') {
             theAnswer = Number(firstNumber) * Number(secondNumber)
-        } else if (operator.type == 'divide') {
+        } else if (operator.type === 'divide') {
             theAnswer = Number(firstNumber) / Number(secondNumber)
         } else {
-            if (secondNumber==''){
+            if (secondNumber===''){
                 theAnswer = firstNumber;
             } else{
                 theAnswer = 'ERR';
