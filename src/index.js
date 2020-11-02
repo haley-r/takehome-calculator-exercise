@@ -7,7 +7,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 
-const historyReducer = (state={}, action)=>{
+const historyReducer = (state=[], action)=>{
   if (action.type === 'UPDATE_HISTORY') {
     return action.payload;
   }
