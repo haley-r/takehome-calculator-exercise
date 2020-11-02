@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 
 //get route to get everything
 router.get('/', (req, res) => {
-    const query = 'SELECT * FROM calculations ORDER BY timestamp DESC;'
+    const query = 'SELECT * FROM calculations ORDER BY timestamp DESC LIMIT 10;'
     pool.query(query)
         .then((result) => {
             console.log('history retrieved: ', result.rows);

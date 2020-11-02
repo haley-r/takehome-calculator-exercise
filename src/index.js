@@ -33,7 +33,7 @@ function* getCalculationHistory() {
     const historyResponse = yield axios.get('/calculations');
     yield put({ type: 'UPDATE_HISTORY', payload: historyResponse.data });
   } catch (error) {
-    console.log('error posting an element', error);
+    console.log('error getting history', error);
   }
 }
 
