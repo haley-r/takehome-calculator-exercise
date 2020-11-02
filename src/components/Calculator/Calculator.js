@@ -1,5 +1,6 @@
 // imports
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 // (redux? axios?)
 
 
@@ -16,6 +17,8 @@ function Calculator(props) {
     const [secondNumber, setSecondNumber] = useState('');
     const [answer, setAnswer] = useState('');
     const [lastAnswer, setLastAnswer] = useState('');
+
+    const dispatch = useDispatch();
 
     const numberInput =(event, value)=> {
         // if number is selected right after completing a calculation
@@ -73,6 +76,16 @@ function Calculator(props) {
         setAnswer(theAnswer);
         setLastAnswer(theAnswer);
         // send everything to the database
+        dispatch({
+            type: 'SAVE_CALCULATION_TO_DB', 
+            payload: {
+                firstNumber: firstNumber,
+                operatorSymbol: operator.symbol,
+                secondNumber: secondNumber,
+                answer: theAnswer.toString(),
+            }
+        })
+
     }
     const clearAll=()=>{
         setFirstNumber('');

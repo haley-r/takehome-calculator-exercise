@@ -15,5 +15,28 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         })
 })
+//post route
+router.post('/', (req, res) => {
+    console.log('req.body is', req.body);
+    const query = 
+        `INSERT INTO "calculations" ("first-number", "operator-symbol", "second-number", "answer", "timestamp")
+        VALUES($1,$2,$3,$4,NOW());`
+    const values = [
+        req.body.firstNumber,
+        req.body.operatorSymbol,
+        req.body.secondNumber,
+        req.body.answer
+    ];
+    pool.query(query, values)
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error posting to db: ', error);
+            res.sendStatus(500);
+        })
+})
+
+
 
 module.exports = router;
