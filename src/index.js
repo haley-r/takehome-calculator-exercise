@@ -44,9 +44,6 @@ function* watcherSaga() {
 
 const sagaMiddleware = createSagaMiddleware();
 
-
-
-
 const storeInstance = createStore(
   combineReducers({
     historyReducer,
@@ -64,8 +61,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-
-// redux store will hold latest 10 calculations
-// when it updates, the components will use useEffect to render
-// it will use websocket to know if it is updated by another user

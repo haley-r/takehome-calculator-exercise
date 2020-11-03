@@ -27,6 +27,7 @@ function App() {
       </header>
       <Calculator />
       <History />
+      <p class="source"><a href="https://github.com/haley-r/takehome-calculator-exercise" target="_blank">source code</a></p>
     </div>
   );
 }

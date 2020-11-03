@@ -118,8 +118,8 @@ button {
     border-radius: 8px;
     font-family: 'Lato', sans-serif;
     font-size: 1.5em;
-    background-color: rgba(214, 167, 241, 0.6);
-    border: 10px outset rgba(55, 214, 187, 0.5);
+    background-color: rgba(8, 28, 58, .5);
+    border: 10px outset rgba(185, 160, 253, 0.5);
     color: white;
 }
 button:active{
@@ -128,10 +128,11 @@ button:active{
   width: 55px;
   transform: translate(3px, -3px);
   box-shadow: 0 0 20px rgb(145, 255, 207);
+  border-width: 14px;
 }
 #clearButton, .operatorButton, #decimalButton {
-    background-color: rgba(235, 187, 99, 0.5);
-    border: 10px outset rgba(233, 94, 131, 0.5);
+    background-color: rgba(119, 34, 20, 0.5);
+    border: 10px outset rgba(255, 123, 152, 0.5);
 }
 #clearButton {
     top: 20px;
@@ -159,8 +160,8 @@ button:active{
     right: 20px;
     width: 130px;
     color: ivory;
-    background-color: rgba(114, 123, 243, 0.5);
-    border: 10px outset rgba(240, 214, 99, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 10px outset rgba(255, 212, 23, 0.5);
 }
 #button6 {
     top: 140px;
@@ -208,4 +209,11 @@ button:active{
     right: 200px;
 }
 
+
+.source a{
+  color: magenta;
+  position: absolute;
+  right: 2vw;
+  bottom: -6em;
+}
 
