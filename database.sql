@@ -4,9 +4,9 @@
 CREATE TABLE "calculations"
 (
     "id" SERIAL PRIMARY KEY,
-    "first-number" VARCHAR NOT NULL,
-    "operator-symbol" VARCHAR NOT NULL,
-    "second-number" VARCHAR NOT NULL,
+    "firstNumber" VARCHAR NOT NULL,
+    "operatorSymbol" VARCHAR NOT NULL,
+    "secondNumber" VARCHAR NOT NULL,
     "answer" VARCHAR NOT NULL,
     "timestamp" TIMESTAMP
 );

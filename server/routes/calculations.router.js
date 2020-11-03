@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 //post route
 router.post('/', (req, res) => {
     const query = 
-        `INSERT INTO "calculations" ("first-number", "operator-symbol", "second-number", "answer", "timestamp")
+        `INSERT INTO "calculations" ("firstNumber", "operatorSymbol", "secondNumber", "answer", "timestamp")
         VALUES($1,$2,$3,$4,NOW());`
     const values = [
         req.body.firstNumber,

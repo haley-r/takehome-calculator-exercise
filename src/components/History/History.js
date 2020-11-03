@@ -12,12 +12,16 @@ function History() {
     return (
         <div>
             <h2>History</h2>
-            <p>last 10 results from the database will be mapped here!</p>
             <div className="history">
                 {history[0] ?
                     <>
+                    {JSON.stringify}
                     {history.map((calculation, i) => (
-                        <div key={i}><p>{calculation.answer}</p></div>
+                        <ul key={i}>
+                            <li>
+                            {calculation.firstNumber} {calculation.operatorSymbol} {calculation.secondNumber} = {calculation.answer}
+                            </li>
+                        </ul>
                     ))}
                     </>
                     :
