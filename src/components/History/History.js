@@ -19,7 +19,11 @@ function History() {
                     {history.map((calculation, i) => (
                         <ul key={i}>
                             <li>
-                            {calculation.firstNumber} {calculation.operatorSymbol} {calculation.secondNumber} = {calculation.answer}
+                                {calculation.firstNumber.toString().substr(calculation.firstNumber.toString().indexOf('.'), 6)} 
+                                {calculation.operatorSymbol}
+                                {calculation.secondNumber.toString().substr(calculation.secondNumber.toString().indexOf('.'), 6)} 
+                                =
+                                {calculation.answer.toString().substr(calculation.answer.toString().indexOf('.'), 6)} 
                             </li>
                         </ul>
                     ))}

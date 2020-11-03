@@ -81,7 +81,7 @@ function Calculator(props) {
             setDisplay('ERR');
         }else {
             setAnswer(theAnswer);
-            setLastAnswer(theAnswer.toString().substr(theAnswer.toString().indexOf('.'), 6));
+            setLastAnswer(theAnswer);
             setDisplay(theAnswer);
         }
         // send everything to the database
@@ -91,7 +91,7 @@ function Calculator(props) {
                 firstNumber: firstNumber,
                 operatorSymbol: operator.symbol,
                 secondNumber: secondNumber,
-                answer: theAnswer.toString().substr(theAnswer.toString().indexOf('.'),6),
+                answer: theAnswer.toString(),
             }
         })
 
