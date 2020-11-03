@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        app header (CALCULATOR)
+        app header (CALCULATOR) TEST
       </header>
       <Calculator />
       <History />
