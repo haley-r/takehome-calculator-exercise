@@ -2,6 +2,7 @@
 
 html{
   background-image: url('https://www.esa.int/var/esa/storage/images/19716864-11-eng-GB/ESA_root_pillars.jpg');
+  background-color: black;
   min-height: 100vh;
   width: 100vw;
   padding: 0;
@@ -33,6 +34,8 @@ header {
     margin: 9em auto;
     background-image: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/terrazzo-flooring-texture-1529487860.jpg?resize=480:*');
     background-repeat: repeat;
+    border: 12px outset rgba(180, 172, 172, 0.7);
+    box-shadow: 0 0 50px rgb(182, 177, 179);
 }
 #calculator {
     position: relative;
@@ -44,20 +47,21 @@ header {
     border: 16px outset rgba(67, 109, 47, .7);
     background-image: url('https://i0.wp.com/digiday.com/wp-content/uploads/2013/11/astroturf.jpg?fit=1600%2C1137&ssl=1');
     background-repeat: repeat;
-    background-size: 100px auto;
+    background-size: 200px auto;
     border-radius: 1em;
     box-shadow: 0 0 50px rgb(182, 177, 179);
 }
 h1{
   font-family: 'Faster One', cursive;
   color: rgb(194, 233, 247);
-  text-shadow: 2px 2px rgb(14, 129, 108);
+  text-shadow: 2px 2px 0 rgb(14, 129, 108);
 }
-h2 {
+.label {
     font-size: 3.5em;
     margin: 0;
     font-family: "Cinzel Decorative", cursive;
-    color: rgba(158, 137, 141, 0.7)
+    color: rgb(192, 179, 174);
+    text-shadow: 2px 2px 1px rgba(104, 101, 99, 0.5);
 }
 #calculator .label{
   display: none;
@@ -71,7 +75,8 @@ ul{
   width: 80%;
   margin: 0 auto 1em auto;
   padding: .5em;
-  list-style-type: square;
+  list-style-type: none;
+  overflow: hidden;
 }
 li {
     padding: .2em;
@@ -97,7 +102,7 @@ li {
     font-family: 'VT323', monospace;
     font-size: 2.5em;
     transform: translate(-.25em, -1em);
-    color: rgb(27, 148, 11);
+    color: rgb(90, 146, 11);
     z-index: 9;
 }
 
@@ -113,8 +118,8 @@ button {
     border-radius: 8px;
     font-family: 'Lato', sans-serif;
     font-size: 1.5em;
-    background-color: rgba(247, 202, 20, 0.5);
-    border: 10px outset rgba(183, 190, 75, 0.5);
+    background-color: rgba(214, 167, 241, 0.6);
+    border: 10px outset rgba(55, 214, 187, 0.5);
     color: white;
 }
 button:active{
@@ -125,8 +130,8 @@ button:active{
   box-shadow: 0 0 20px rgb(145, 255, 207);
 }
 #clearButton, .operatorButton, #decimalButton {
-    background-color: rgba(10, 151, 132, .5);
-    border: 10px outset rgba(28, 173, 240, 0.5);
+    background-color: rgba(235, 187, 99, 0.5);
+    border: 10px outset rgba(233, 94, 131, 0.5);
 }
 #clearButton {
     top: 20px;
@@ -154,8 +159,8 @@ button:active{
     right: 20px;
     width: 130px;
     color: ivory;
-    background-color: rgba(211, 19, 228, 0.5);
-    border: 10px outset rgba(228, 87, 117, 0.5);
+    background-color: rgba(114, 123, 243, 0.5);
+    border: 10px outset rgba(240, 214, 99, 0.5);
 }
 #button6 {
     top: 140px;
