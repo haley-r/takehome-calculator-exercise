@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 
@@ -51,7 +51,7 @@ const storeInstance = createStore(
   combineReducers({
     historyReducer,
   }),
-  applyMiddleware(logger, sagaMiddleware),
+  applyMiddleware( sagaMiddleware),
 );
 
 sagaMiddleware.run(watcherSaga);

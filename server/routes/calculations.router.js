@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
     const query = 'SELECT * FROM calculations ORDER BY timestamp DESC LIMIT 10;'
     pool.query(query)
         .then((result) => {
-            console.log('history retrieved: ', result.rows);
             res.send(result.rows);
         })
         .catch((error) => {

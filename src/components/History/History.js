@@ -1,7 +1,5 @@
 // imports
-import React, {useEffect} from 'react';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 
 // the purpose of this component is to display
 // the last ten results from all users of the app.
@@ -13,16 +11,6 @@ function History() {
     // look to the redux store for history
     const history = useSelector(state => state.historyReducer);
 
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            dispatch({ type: 'FETCH_HISTORY' });
-        }, 1000);
-        return () => clearInterval(interval);
-    }, []);
-
-    //useEffect to re render anytime history is updated
     return (
         <div>
             <h2>History</h2>
