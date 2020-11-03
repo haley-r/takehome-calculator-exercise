@@ -10,14 +10,3 @@ CREATE TABLE "calculations"
     "answer" VARCHAR NOT NULL,
     "timestamp" TIMESTAMP
 );
-
---sample data
-INSERT INTO "calculations"
-    ("first-number", "operator-symbol", "second-number",
-    "answer", "timestamp")
-VALUES
-    ('2', '+', '3', '5', NOW() ),
-    ('2', '-', '3', '-1', NOW() ),
-    ('2', '*', '3', '6', NOW() ),
-    ('2', '/', '3', '.66666', NOW() )
-        ;
