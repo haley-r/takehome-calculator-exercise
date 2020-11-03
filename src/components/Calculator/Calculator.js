@@ -80,9 +80,15 @@ function Calculator(props) {
             setLastAnswer('ERR');
             setDisplay('ERR');
         }else {
+            if (theAnswer.toString().indexOf('.')!= -1){
+                setAnswer(theAnswer.toString().substr(0, theAnswer.toString().indexOf('.')+6));
+                setLastAnswer(theAnswer.toString().substr(0, theAnswer.toString().indexOf('.')+6));
+                setDisplay(theAnswer.toString().substr(0, theAnswer.toString().indexOf('.')+6));
+            }else{
             setAnswer(theAnswer);
             setLastAnswer(theAnswer);
             setDisplay(theAnswer);
+            }
         }
         // send everything to the database
         dispatch({
@@ -104,31 +110,32 @@ function Calculator(props) {
     }
 
     return (
-        <div>
-            <h2>Calculator</h2>
-            <div id="rtlDiv">
-                <h3 id="calcDisplay">{display}</h3>
+        <div id="calculator">
+            <h2 class="label">Calculator</h2>
+            <div id="inputArea">
+                <div id="rtlDiv">
+                    <h3 id="calcDisplay">{display}</h3>
+                </div>
+                <div id="button-pad">
+                    <button id="button0" onClick={(event) => numberInput(event, '0')}>0</button>
+                    <button id="button1" onClick={(event) => numberInput(event, '1')}>1</button>
+                    <button id="button2" onClick={(event) => numberInput(event, '2')}>2</button>
+                    <button id="button3" onClick={(event) => numberInput(event, '3')}>3</button>
+                    <button id="button4" onClick={(event) => numberInput(event, '4')}>4</button>
+                    <button id="button5" onClick={(event) => numberInput(event, '5')}>5</button>
+                    <button id="button6" onClick={(event) => numberInput(event, '6')}>6</button>
+                    <button id="button7" onClick={(event) => numberInput(event, '7')}>7</button>
+                    <button id="button8" onClick={(event) => numberInput(event, '8')}>8</button>
+                    <button id="button9" onClick={(event) => numberInput(event, '9')}>9</button>
+                    <button id="decimalButton" onClick={(event) => numberInput(event, '.')}>.</button>
+                    <button class="operatorButton" id="addButton" onClick={(event) => operatorInput(event, 'add', '+')}>+</button>
+                    <button class="operatorButton" id="subtractButton" onClick={(event) => operatorInput(event, 'subtract', '-')}>-</button>
+                    <button class="operatorButton" id="multiplyButton" onClick={(event) => operatorInput(event, 'multiply', '*')}>*</button>
+                    <button class="operatorButton" id="divideButton" onClick={(event) => operatorInput(event, 'divide', '/')}>/</button>
+                    <button id= "calculateButton" onClick={runCalculation}>=</button>
+                    <button id="clearButton" onClick={clearAll}>C</button>
+                </div>
             </div>
-            <div id="button-pad">
-                <button onClick={(event) => numberInput(event, '0')}>0</button>
-                <button onClick={(event) => numberInput(event, '1')}>1</button>
-                <button onClick={(event) => numberInput(event, '2')}>2</button>
-                <button onClick={(event) => numberInput(event, '3')}>3</button>
-                <button onClick={(event) => numberInput(event, '4')}>4</button>
-                <button onClick={(event) => numberInput(event, '5')}>5</button>
-                <button onClick={(event) => numberInput(event, '6')}>6</button>
-                <button onClick={(event) => numberInput(event, '7')}>7</button>
-                <button onClick={(event) => numberInput(event, '8')}>8</button>
-                <button onClick={(event) => numberInput(event, '9')}>9</button>
-                <button onClick={(event) => numberInput(event, '.')}>.</button>
-                <button onClick={(event) => operatorInput(event, 'add', '+')}>+</button>
-                <button onClick={(event) => operatorInput(event, 'subtract', '-')}>-</button>
-                <button onClick={(event) => operatorInput(event, 'multiply', '*')}>*</button>
-                <button onClick={(event) => operatorInput(event, 'divide', '/')}>/</button>
-                <button onClick={runCalculation}>=</button>
-                <button onClick={clearAll}>C</button>
-            </div>
-
         </div>
     );
 }

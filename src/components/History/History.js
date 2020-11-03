@@ -10,24 +10,21 @@ function History() {
     const history = useSelector(state => state.historyReducer);
 
     return (
-        <div>
-            <h2>History</h2>
+        <div id="history">
+            <h2 class="label">History</h2>
             <div className="history">
                 {history[0] ?
-                    <>
-                    {JSON.stringify}
+                    <ul>
                     {history.map((calculation, i) => (
-                        <ul key={i}>
-                            <li>
-                                {calculation.firstNumber.toString().substr(calculation.firstNumber.toString().indexOf('.'), 6)} 
-                                {calculation.operatorSymbol}
-                                {calculation.secondNumber.toString().substr(calculation.secondNumber.toString().indexOf('.'), 6)} 
-                                =
-                                {calculation.answer.toString().substr(calculation.answer.toString().indexOf('.'), 6)} 
-                            </li>
-                        </ul>
+                        <li key={i}>
+                            {calculation.firstNumber.toString()} 
+                            {calculation.operatorSymbol}
+                            {calculation.secondNumber.toString()} 
+                            =
+                            {calculation.answer.toString()} 
+                        </li>
                     ))}
-                    </>
+                    </ul>
                     :
                     <p>loading...</p>
                 }

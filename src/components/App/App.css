@@ -1,38 +1,206 @@
-/* .App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&family=Faster+One&family=Lato&family=VT323&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+html{
+  background-image: url('https://www.esa.int/var/esa/storage/images/19716864-11-eng-GB/ESA_root_pillars.jpg');
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100vw;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+body{
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+header {
+    width: 100vw;
+    height: 2em;
+    padding: 0 2em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: .8em;
+    color: rgb(20, 211, 116);
+    z-index: 10;
+}
+#history {
+    background-color: rgb(243, 243, 241);
+    width: 70vw;
+    text-align: center;
+    padding: 1em;
+    color: rgb(42, 54, 48);
+    position: relative;
+    margin: 9em auto;
+    background-image: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/terrazzo-flooring-texture-1529487860.jpg?resize=480:*');
+    background-repeat: repeat;
+}
+#calculator {
+    position: relative;
+    top: 10vh;
+    width: 300px;
+    height: 450px;
+    background-color: rgb(219, 218, 185);
+    margin: 0 auto;
+    border: 16px outset rgba(67, 109, 47, .7);
+    background-image: url('https://i0.wp.com/digiday.com/wp-content/uploads/2013/11/astroturf.jpg?fit=1600%2C1137&ssl=1');
+    background-repeat: repeat;
+    background-size: 100px auto;
+    border-radius: 1em;
+    box-shadow: 0 0 50px rgb(182, 177, 179);
+}
+h1{
+  font-family: 'Faster One', cursive;
+  color: rgb(194, 233, 247);
+  text-shadow: 2px 2px rgb(14, 129, 108);
+}
+h2 {
+    font-size: 3.5em;
+    margin: 0;
+    font-family: "Cinzel Decorative", cursive;
+    color: rgba(158, 137, 141, 0.7)
+}
+#calculator .label{
+  display: none;
+}
+ul{
+  background-color: rgb(3, 15, 180);
+  border: 12px inset rgb(228, 211, 211);
+  color: rgb(213, 213, 0);
+  font-family: 'VT323', monospace;
+  font-size: 1.6em;
+  width: 80%;
+  margin: 0 auto 1em auto;
+  padding: .5em;
+  list-style-type: square;
+}
+li {
+    padding: .2em;
+}
+#inputArea {
+    width: 280px;
+    height: 460px;
+    margin: 10px auto;
+}
+#rtlDiv {
+    height: 50px;
+    width: 90%;
+    margin: 20px auto;
+    border: 5px inset black;
+    background-color: rgb(46, 4, 43);
+    text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#calcDisplay {
+    float: right;
+    height: 50px;
+    font-family: 'VT323', monospace;
+    font-size: 2.5em;
+    transform: translate(-.25em, -1em);
+    color: rgb(27, 148, 11);
+    z-index: 9;
+}
+
+#button-pad {
+    height: 350px;
+    position: relative;
+    padding: 0 5px;
+}
+button {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5em;
+    background-color: rgba(247, 202, 20, 0.5);
+    border: 10px outset rgba(183, 190, 75, 0.5);
+    color: white;
+}
+button:active{
+  border-radius: 15px;
+  height: 55px;
+  width: 55px;
+  transform: translate(3px, -3px);
+  box-shadow: 0 0 20px rgb(145, 255, 207);
+}
+#clearButton, .operatorButton, #decimalButton {
+    background-color: rgba(10, 151, 132, .5);
+    border: 10px outset rgba(28, 173, 240, 0.5);
+}
+#clearButton {
+    top: 20px;
+    right: 140px;
+    width: 110px;
+}
+#multiplyButton {
+    top: 20px;
+    right: 20px;
+}
+#subtractButton {
+    top: 140px;
+    right: 20px;
+}
+#addButton {
+    top: 200px;
+    right: 20px;
+}
+#divideButton {
+    top: 80px;
+    right: 20px;
+}
+#calculateButton {
+    top: 260px;
+    right: 20px;
+    width: 130px;
+    color: ivory;
+    background-color: rgba(211, 19, 228, 0.5);
+    border: 10px outset rgba(228, 87, 117, 0.5);
+}
+#button6 {
+    top: 140px;
+    right: 80px;
+}
+#button3 {
+    top: 200px;
+    right: 80px;
+}
+#button9 {
+    top: 80px;
+    right: 80px;
+}
+#decimalButton {
+    top: 20px;
+    right: 80px;
+}
+#button5 {
+    top: 140px;
+    right: 140px;
+}
+#button2 {
+    top: 200px;
+    right: 140px;
+}
+#button8 {
+    top: 80px;
+    right: 140px;
+}
+#button0 {
+    top: 260px;
+    right: 160px;
+    width: 90px;
+}
+#button4 {
+    top: 140px;
+    right: 200px;
+}
+#button1 {
+    top: 200px;
+    right: 200px;
+}
+#button7 {
+    top: 80px;
+    right: 200px;
+}
+
+
