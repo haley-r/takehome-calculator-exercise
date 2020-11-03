@@ -26,7 +26,7 @@ function Calculator(props) {
             setOperator({});
             setSecondNumber('');
             setAnswer('');
-            setDisplay(firstNumber + value);
+            setDisplay(value);
         }
         // if there is an operator set but not just because
         // a calculation was just run, add to second number string        
@@ -81,7 +81,7 @@ function Calculator(props) {
             setDisplay('ERR');
         }else {
             setAnswer(theAnswer);
-            setLastAnswer(theAnswer);
+            setLastAnswer(theAnswer.toString().substr(theAnswer.toString().indexOf('.'), 6));
             setDisplay(theAnswer);
         }
         // send everything to the database
@@ -91,7 +91,7 @@ function Calculator(props) {
                 firstNumber: firstNumber,
                 operatorSymbol: operator.symbol,
                 secondNumber: secondNumber,
-                answer: theAnswer.toString(),
+                answer: theAnswer.toString().substr(theAnswer.toString().indexOf('.'),6),
             }
         })
 
@@ -100,6 +100,7 @@ function Calculator(props) {
         setFirstNumber('');
         setOperator({});
         setSecondNumber('');
+        setDisplay('');
     }
 
     return (
