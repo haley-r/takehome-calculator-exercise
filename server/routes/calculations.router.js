@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
-//get route to get everything
+//get route
 router.get('/', (req, res) => {
     const query = 'SELECT * FROM calculations ORDER BY timestamp DESC LIMIT 10;'
     pool.query(query)
