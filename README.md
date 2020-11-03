@@ -15,7 +15,7 @@ The app must be hosted and deployed to be publicly accessible to engineers at Se
 
 ## Approach
 
-I chose to use React with functional components since it's been a while since I've coded a full stack app in React and I've never really worked with functional components. At the beginning of the project I thought this would be a great use case for WebSockets (which I've also been wanting to give a try) because I know they can be used for real-time unsolicited updates when there's new information. I was looking at [this tutorial](https://www.pluralsight.com/guides/using-web-sockets-in-your-reactredux-app) that uses Redux with websockets, so I set up redux and sagas. 
+I chose to use React with functional components since it's been a while since I've coded a full stack app in React and I've never really explored using functional components in the same way I've used class components. At the beginning of the project I thought this would be a great use case for WebSockets (which I've also been wanting to give a try) because I know they can be used for real-time unsolicited updates when there's new information in lieu of constant requests to the database. I was looking at [this tutorial](https://www.pluralsight.com/guides/using-web-sockets-in-your-reactredux-app) that uses Redux with websockets, so I set up redux and sagas. 
 
 However, the socket.io implementation felt more time consuming and complicated than the time I gave myself for this project, so I opted to send a GET request for history every second from the app. This doesn't feel ideal and is not technically an immediate update every time a user runs a calculation, but seems acceptable for the scope and use cases of this project, where no user needs the result of a calculation in order to run their own.
 
@@ -58,12 +58,14 @@ Though it took much longer than expected, I'm pleased with how much I learned ab
 
 I think the code could be a little cleaner overall/moved into modules, and that adding Redux and Sagas wasn't really necessary for this project.The CSS was fast and messy (though it wasn't the focus of the project) and the class names and IDs in the JSX are probably overboard.
 
-The biggest area for improvement I think is sticking to a timeline. Part of what took me so long was being ambitious with using this project as a reason to learn and brush up on skills which I would definitely do again to some extent, but more research ahead of time might have swayed me a different way and saved a lot of time and kept the project simpler.
+I didn't concern myself too much with mathematical accuracy for this exercise, and truncated numbers in arbitrary ways so it wouldn't get too messy. There's definitely a better way!
+
+The biggest area for improvement is sticking to a timeline/scoping the project. Part of what took me so long was being ambitious with using this exercise as a reason to learn and brush up on skills I've been meaning to anyways (which I would definitely do again, to some extent), but more research ahead of time might have swayed me a different way and saved a lot of time and kept the project simpler.
 
 
-## If There Were More Time...
+## Next Steps / Ideas for Continuation of Concepts Used
 
-I really would love to learn more about WebSockets and updating without sending requests all the time. Even locally it seemed to slow things down.
+I would love to learn more about WebSockets and updating without sending requests all the time. Even locally it seemed to slow things down.
 
 It would also be fun to try to mark different users' calculations with different colors, or somehow be able to convey which results in the history are one's own without having to do complicated auth or usernames. This seems like something WebSockets could help with as well.
 
