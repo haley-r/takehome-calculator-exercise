@@ -24,7 +24,7 @@ function* postCalculationSaga(action) {
     yield axios.post('/calculations', action.payload);
     yield put({ type: 'FETCH_HISTORY' });
   } catch (error) {
-    console.log('error posting an element', error);
+    console.log('error posting calculation', error);
   }    
 }
 
