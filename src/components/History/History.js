@@ -3,12 +3,10 @@ import { useSelector } from 'react-redux';
 
 // the purpose of this component is to display
 // the last ten results from all users of the app.
-// web sockets will be utilized to inform this component when 
-// a new calculation has been performed, and the useEffect hook
-// will be used to then display the most up to date history
+// this component has access to the redux store that's getting updated
+// every time App.js sends a FETCH_HISTORY dispatch
 
 function History() {
-    // look to the redux store for history
     const history = useSelector(state => state.historyReducer);
 
     return (

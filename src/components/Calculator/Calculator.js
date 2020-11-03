@@ -1,14 +1,11 @@
 // imports
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// (redux? axios?)
-
 
 // the purpose of this component is to be an interface for
-// the user to input two numbers, an operator, and request that 
-// the calculation be completed. pressing the '=' button dispatches
-// two numbers, the operator, the result, and the timestamp to 
-// a database (via redux/store?)
+// the user to input two numbers and an operator and then '='
+// to calculate and send all of the values to the database
+// where they can be accessed as history
 
 function Calculator(props) {
     // initialize the variables needed for making a calculation
@@ -17,6 +14,7 @@ function Calculator(props) {
     const [secondNumber, setSecondNumber] = useState('');
     const [answer, setAnswer] = useState('');
     const [lastAnswer, setLastAnswer] = useState('');
+    const [display, setDisplay] = useState('');
 
     const dispatch = useDispatch();
 
@@ -28,15 +26,18 @@ function Calculator(props) {
             setOperator({});
             setSecondNumber('');
             setAnswer('');
+            setDisplay(firstNumber + value);
         }
         // if there is an operator set but not just because
         // a calculation was just run, add to second number string        
         else if (operator.type && answer===''){
             setSecondNumber(secondNumber + value);
+            setDisplay(secondNumber + value);
         }
         // if theres not an operator set, add to the first number string
         else{
             setFirstNumber(firstNumber + value);
+            setDisplay(firstNumber + value);
         }
     }
 
@@ -48,6 +49,7 @@ function Calculator(props) {
             setOperator({type: type, symbol: symbol});
             setSecondNumber('');
             setAnswer('');
+            setDisplay(lastAnswer);
         }
         else setOperator({
             type: type,
@@ -73,8 +75,15 @@ function Calculator(props) {
                 theAnswer = 'ERR';
             }
         }
-        setAnswer(theAnswer);
-        setLastAnswer(theAnswer);
+        if (isNaN(theAnswer)){
+            setAnswer('ERR');
+            setLastAnswer('ERR');
+            setDisplay('ERR');
+        }else {
+            setAnswer(theAnswer);
+            setLastAnswer(theAnswer);
+            setDisplay(theAnswer);
+        }
         // send everything to the database
         dispatch({
             type: 'SAVE_CALCULATION_TO_DB', 
@@ -96,10 +105,10 @@ function Calculator(props) {
     return (
         <div>
             <h2>Calculator</h2>
-            <p>calculation: {firstNumber} {operator.symbol} {secondNumber}</p>
-            <p>answer: {answer}</p>
-            <div>
-                {/* could be a number button component? */}
+            <div id="rtlDiv">
+                <h3 id="calcDisplay">{display}</h3>
+            </div>
+            <div id="button-pad">
                 <button onClick={(event) => numberInput(event, '0')}>0</button>
                 <button onClick={(event) => numberInput(event, '1')}>1</button>
                 <button onClick={(event) => numberInput(event, '2')}>2</button>
@@ -111,19 +120,12 @@ function Calculator(props) {
                 <button onClick={(event) => numberInput(event, '8')}>8</button>
                 <button onClick={(event) => numberInput(event, '9')}>9</button>
                 <button onClick={(event) => numberInput(event, '.')}>.</button>
-            </div>
-            <div>
-                {/* could be an operator button component */}
                 <button onClick={(event) => operatorInput(event, 'add', '+')}>+</button>
                 <button onClick={(event) => operatorInput(event, 'subtract', '-')}>-</button>
                 <button onClick={(event) => operatorInput(event, 'multiply', '*')}>*</button>
                 <button onClick={(event) => operatorInput(event, 'divide', '/')}>/</button>
-            </div>
-            <div>
-                {/* could be a special calculate component */}
                 <button onClick={runCalculation}>=</button>
                 <button onClick={clearAll}>C</button>
-                {/* maybe also have backspace? if time */}
             </div>
 
         </div>
